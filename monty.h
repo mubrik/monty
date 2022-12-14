@@ -46,7 +46,7 @@ typedef struct instruction_s
  * struct m_data - Holds the general data for the monty program
  * @file: hol0ds the pointer to the file input
  * @p_action: holds the pointer for each line read from file
- * @p_data: flag for stack or queue. 0 for stack, 1 for queue
+ * @d_type: flag for stack or queue. 0 for stack, 1 for queue
  * @stk_head: head node of linked list
  * stk_head
  */
@@ -56,7 +56,7 @@ typedef struct m_data
 	char *p_action;
 	int d_type;
 	char *p_data[2];
-    stack_t *stk_head;
+  stack_t **stk_head;
 } m_data_t;
 
 extern m_data_t monty_data;
@@ -86,4 +86,11 @@ void update_dtype(char *op);
 char *TrimWhiteSpace(char *str);
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number);
 char *Tokenize(char *str);
+
+/* linked list utility */
+stack_t *add_to_node_end(stack_t **head, const int n);
+stack_t *add_to_node(stack_t **head, const int n);
+int *rm_first_node(stack_t **head);
+int *rm_last_node(stack_t **head);
+
 #endif /* MONTY_H */

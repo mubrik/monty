@@ -9,55 +9,62 @@
  */
 void Push(stack_t **stk, unsigned int line_number)
 {
-	dlistint_t *new_node;
+	stack_t *node;
+	int num;
 
-	new_node = malloc(sizeof(dlistint_t));
-
-	if (!new_node)
+	if (!stk)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc can't allocate memory");
-		return;
+		fprintf(stderr, "Initialize monthy data");
+		exit(EXIT_FAILURE);
 	}
-
-	new_node->n = n;
-	new_node->next = NULL;
-	new_node->prev = NULL;
-
-	if (!(*head))
+	/* get num from monthy d */
+	num = monty_data.p_data[1];
+	/* check if num actually a number */
+	if (!(num >= 0 && num <= 9))
 	{
-		*head = new_node;
-		return (*head);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
+	/* stack LIFO / Queue FIFO */
+	node = add_to_node_end(stk, num);
+	/* check node created */
+	if (!node)
+		fprintf(stderr, "Error: malloc failed"), exit(EXIT_FAILURE);
 
-	new_node->next = *head;
-	(*head)->prev = new_node;
-	*head = new_node;
-
-	return (new_node);	
 }
 
+
 /**
- * Pop - Pops the top item and return it
- * @top: ptr to current top to allow mutation
- * @head: head of malloc'd memory
- * @return *id_name_t or NULL
- * Return: *id_name_t
+ * Pop - Pops an item from the stack
+ * @stk: head node of list
+ * @line_number: current line number in bytecode file
+ *
+ * Return: nothing
  */
-void Pop(stack_t **stk, unsigned int lin_number)
+void Pop(stack_t **stk, unsigned int line_number)
 {
-	
-	//id_name_t *node = NULL;
-	//int top_c = stk->top;
+	stack_t *node, *prev, *next;
+	int ex_code;
 
-	//if (!stk || is_empty(top_c))
-//		return (NULL);
-	/* get node */
-	//node = stk->head[top_c];
-	/* check valid */
-	//if (!node)
-	//	return (NULL);
-	/* not sure if to free the item?, decrement top */
-	//stk->top = top_c - 1;
-
-	//return (node);
+	if (!stk || !(*stk))
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	/* check LIFO/FIFO */
+	if (monty_data.d_type == 0)
+	{
+		/* stack LIFO, remove last item */
+		ex_code = rm_last_node(stk);
+	}
+	else
+	{
+		/* queue FIFO, remove first item */
+		ex_code = rm_first_node(stk);
+	}
+	if (ex_code == 1)
+	{
+		/* stack not created yet, not sure how to handle this error */
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+	}
 }
