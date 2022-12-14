@@ -53,10 +53,9 @@ typedef struct instruction_s
 typedef struct m_data
 {
 	FILE *file;
-	char *p_action;
 	int d_type;
 	char *p_data[2];
-  stack_t **stk_head;
+  	stack_t *stk_head;
 } m_data_t;
 
 extern m_data_t monty_data;
@@ -85,12 +84,12 @@ void QFree(stack_t **stk);
 void update_dtype(char *op);
 char *TrimWhiteSpace(char *str);
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number);
-char *Tokenize(char *str);
+void Tokenize(char *str);
 
 /* linked list utility */
 stack_t *add_to_node_end(stack_t **head, const int n);
 stack_t *add_to_node(stack_t **head, const int n);
-int *rm_first_node(stack_t **head);
-int *rm_last_node(stack_t **head);
+int rm_first_node(stack_t **head);
+int rm_last_node(stack_t **head);
 
 #endif /* MONTY_H */

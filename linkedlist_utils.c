@@ -78,7 +78,7 @@ stack_t *add_to_node_end(stack_t **head, const int n)
  * @head: pto to head ptr to list first elem
  * Return: ptr to new node.
  */
-int *rm_last_node(stack_t **head)
+int rm_last_node(stack_t **head)
 {
 	stack_t *node = NULL, *prev = NULL;
 	/* null chk */
@@ -110,7 +110,7 @@ int *rm_last_node(stack_t **head)
  * @head: pto to head ptr to list first elem
  * Return: ptr to new node.
  */
-int *rm_first_node(stack_t **head)
+int rm_first_node(stack_t **head)
 {
 	stack_t *node = NULL, *next = NULL;
 	/* null chk */

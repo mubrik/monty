@@ -9,6 +9,7 @@
  */
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 {
+
 	int idx = 0;
 
 	instruction_t arr_structs[] = {
@@ -87,23 +88,22 @@ char *TrimWhiteSpace(char *str)
  *
  * Return: array of tokens/strings
  */
-char *Tokenize(char *str)
+void Tokenize(char *str)
 {
 	int idx = 0;
-	char *arr_token[2];
 	char *token;
-	const char *seperators = " \n\t\v";
+	const char *seperators = " \n";
 
 	token = strtok(str, seperators);
 
-	while (token && idx < 2)
-	{
-		arr_token[idx] = token;
+	while (token)
+	{	
+		monty_data.p_data[idx] = token;
 		token = strtok(NULL, seperators);
 		idx++;
+		if (idx == 2) return;
 	}
-
-	arr_token[idx] = token;
-	return (arr_token);
+	
+	monty_data.p_data[idx] = token;
 }
 

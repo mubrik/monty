@@ -18,7 +18,7 @@ void Push(stack_t **stk, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	/* get num from monthy d */
-	num = monty_data.p_data[1];
+	num = atoi(monty_data.p_data[1]);
 	/* check if num actually a number */
 	if (!(num >= 0 && num <= 9))
 	{
@@ -26,7 +26,10 @@ void Push(stack_t **stk, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	/* stack LIFO / Queue FIFO */
-	node = add_to_node_end(stk, num);
+	if (monty_data.d_type)
+		node = add_to_node_end(stk, num);
+	else
+		node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
 		fprintf(stderr, "Error: malloc failed"), exit(EXIT_FAILURE);
@@ -55,12 +58,12 @@ void Pop(stack_t **stk, unsigned int line_number)
 	if (monty_data.d_type == 0)
 	{
 		/* stack LIFO, remove last item */
-		ex_code = rm_last_node(stk);
+		ex_code = rm_first_node(stk);
 	}
 	else
 	{
 		/* queue FIFO, remove first item */
-		ex_code = rm_first_node(stk);
+		ex_code = rm_last_node(stk);
 	}
 	if (ex_code == 1)
 	{
