@@ -15,14 +15,14 @@ void Push(stack_t **stk, unsigned int line_number)
 	/* get num from monthy_data, atoi returns 0 on error*/
 	/* make sure p_data[1] is NULL if not given, we cant check for == 0 */
 	/* 0 is an int */
-	if (monty_data.p_data[1])
-		num = atoi(monty_data.p_data[1]);
-	else
+	if (monty_data.p_data[1] == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	else
+		num = atoi(monty_data.p_data[1]);
 	/* check if num actually a number or NULL */
 	/* @smart cant push 0 to stack with this if check? */
 	/* if (num == 0 || !num) */
