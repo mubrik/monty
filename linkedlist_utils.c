@@ -130,9 +130,11 @@ int rm_first_node(stack_t **head)
 	/* check if next, set as new head and remove prvious*/
 	next = node->next;
 	if (next)
-		next->prev = NULL, *head = next;
-	/* isolated, free pointer */
-	free(node);
+		next->prev = NULL, *head = next, free(node);
+	
+	/* if next does not exist, then just empty the list */
+	else free(*head), *head = NULL;
 
+	//free(node);
 	return (0);
 }
