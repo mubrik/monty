@@ -17,10 +17,15 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "pint", Pint },
 		{ "pop", Pop },
 		{ "swap", Swap },
-		{ "add", Add }
+		{ "add", Add },
+		{ "nop", Nop },
+		{ "sub", Sub },
+		{ "div", Div },
+		{ "mod", Mod },
+		{ "mul", Mul },
 	};
 
-	while (idx < 6)
+	while (idx < 11)
 	{
 		if (strcmp(arr_structs[idx].opcode, opcode) == 0)
 			return (arr_structs[idx].f);

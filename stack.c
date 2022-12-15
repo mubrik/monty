@@ -22,9 +22,11 @@ void Push(stack_t **stk, unsigned int line_number)
 		num = atoi(monty_data.p_data[1]);
 
 	/* check if num actually a number or NULL */
+	/* @smart cant push 0 to stack with this if check? */
 	if (num == 0 || !num)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
 	/* stack LIFO / Queue FIFO */
@@ -53,6 +55,7 @@ void Pop(stack_t **stk, unsigned int line_number)
 	if (!stk || !(*stk))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
 	/* check LIFO/FIFO */

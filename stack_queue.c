@@ -105,3 +105,15 @@ void Add(stack_t **stk, unsigned int line_number)
 	if (!node)
 		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
 }
+
+/**
+ * Nop - does nothing
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
+void Nop(stack_t **stk, unsigned int line_number)
+{
+	return;
+}

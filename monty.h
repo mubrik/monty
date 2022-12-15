@@ -77,6 +77,11 @@ void Swap(stack_t **stk, unsigned int line_number);
 void Add(stack_t **stk, unsigned int line_number);
 void Pall(stack_t **stk, unsigned int line_number);
 void Pint(stack_t **stk, unsigned int line_number);
+void Nop(stack_t **stk, unsigned int line_number);
+void Sub(stack_t **stk, unsigned int line_number);
+void Div(stack_t **stk, unsigned int line_number);
+void Mul(stack_t **stk, unsigned int line_number);
+void Mod(stack_t **stk, unsigned int line_number);
 
 /* utility functions */
 void update_dtype(char *op);
@@ -91,5 +96,6 @@ stack_t *add_to_node(stack_t **head, const int n);
 int rm_first_node(stack_t **head);
 int rm_last_node(stack_t **head);
 void free_stk_list(stack_t **head);
+int list_has_2_nodes(stack_t **head);
 
 #endif /* MONTY_H */

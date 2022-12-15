@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     else
     {
       fprintf(stderr, "L%ld: unknown instruction <opcode> %s\n",
-        line_number, monty_data.p_data[0]);
+        line_number, monty_data.p_data[0]), free_m_buff();
       exit(EXIT_FAILURE);
     }
 
