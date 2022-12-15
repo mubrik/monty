@@ -95,10 +95,12 @@ stack_t *add_to_node_end(stack_t **head, const int n);
 stack_t *add_to_node(stack_t **head, const int n);
 int rm_first_node(stack_t **head);
 int rm_last_node(stack_t **head);
+size_t print_stk_list(stack_t *head);
 void free_stk_list(stack_t **head);
 int list_has_2_nodes(stack_t **head);
 int list_is_empty(stack_t **head);
 
 #define L_EMPTY(p) list_is_empty(p)
+#define L_TW_NODES(p) list_has_2_nodes(p)
 
 #endif /* MONTY_H */

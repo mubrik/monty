@@ -25,3 +25,33 @@ int list_is_empty(stack_t **head)
 		return (1);
 	return (0);
 }
+
+/**
+ * print_stk_list - prints all the elements of a stack_t list..
+ * @head: head ptr to list first elem
+ * Return: list size .
+ */
+size_t print_stk_list(stack_t *head)
+{
+	size_t count = 0;
+	stack_t *node;
+
+	node = head;
+	/* make sure start of node, not necessary but alx gon alx */
+	while (node)
+	{
+		if (!node->prev)
+			break;
+		node = node->prev;
+	}
+
+	/* iterate */
+	while (node)
+	{
+		printf("%d\n", node->n);
+		/* push */
+		node = node->next, count++;
+	}
+
+	return (count);
+}

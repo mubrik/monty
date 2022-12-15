@@ -29,13 +29,10 @@ void Pint(stack_t **stk, unsigned int line_number)
  */
 void Pall(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *ptr = *stk;
+	if (L_EMPTY(stk))
+		return;
 
-	while (ptr)
-	{
-		printf("%d\n", ptr->n);
-		ptr = ptr->next;
-	}
+	print_stk_list(*stk);
 }
 
 /**
