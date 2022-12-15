@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 			p_func(&monty_data.stk_head, line_number);
 		else
 		{
-			fprintf(stderr, "L%ld: unknown instruction <opcode> %s\n",
+			fprintf(stderr, "L%ld: unknown instruction %s\n",
 				line_number, monty_data.p_data[0]), free_m_buff();
 			exit(EXIT_FAILURE);
 		}
