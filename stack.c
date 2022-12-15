@@ -22,7 +22,7 @@ void Push(stack_t **stk, unsigned int line_number)
 	/* 0 is an int */
 	if (monty_data.p_data[1])
 		num = atoi(monty_data.p_data[1]);
-	else
+	if (num == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m_buff();
