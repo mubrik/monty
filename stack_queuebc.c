@@ -22,11 +22,13 @@ void Pstr(stack_t **stk, 	__attribute__((unused)) unsigned int line_number)
 	while (node)
 	{
 		if (node->n == 0)
-			return;
+			break;
 		if (!IS_ASCII(node->n))
-			return;
+			break;
 		printf("%c", node->n);
 		node = node->next;
 	}
+	/* last line */
+	printf("\n");
 
 }
