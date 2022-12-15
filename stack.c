@@ -10,11 +10,11 @@
 void Push(stack_t **stk, unsigned int line_number)
 {
 	stack_t *node = NULL;
-	int num = 0;
+	long num = 0;
+	buf endptr;
 
 	/* get num from monthy_data, atoi returns 0 on error*/
-	/* make sure p_data[1] is NULL if not given, we cant check for == 0 */
-	/* 0 is an int */
+	/* make sure p_data[1] is NULL if not given */
 	if (monty_data.p_data[1] == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -22,10 +22,9 @@ void Push(stack_t **stk, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	else
-		num = atoi(monty_data.p_data[1]);
+		num = strtol(monty_data.p_data[1], &endptr, 10);
 	/* check if num actually a number or NULL */
-	/* @smart cant push 0 to stack with this if check? */
-	if (num == 0)
+	if (endptr == monty_data.p_data[1])
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m_buff();
