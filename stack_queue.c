@@ -45,5 +45,21 @@ void Pall(stack_t **stk, unsigned int line_number)
  */
 void Swap(stack_t **stk, unsigned int line_number)
 {
+	stack_t *next;
 
+	/* if number of nodes is less than 2 */
+	if (!(*stk) || !(*stk)->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	
+	next = (*stk)->next;
+	next->prev = (*stk)->prev;
+	(*stk)->prev = next;
+	(*stk)->next = next->next;
+	next->next->prev = *stk;
+	next->next = *stk;
+	/*update head node */
+	*stk = next;
 } 
