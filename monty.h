@@ -91,7 +91,7 @@ void Rotr(stack_t **stk, unsigned int line_number);
 #define INS_COUNT 15
 
 /* utility functions */
-void update_dtype(char *op);
+int update_dtype(char *op);
 char *TrimWhiteSpace(char *str);
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void Tokenize(char *str);
