@@ -31,14 +31,14 @@ void Sub(stack_t **stk, unsigned int line_number)
 
 	next = curr->next;
 	/* get new node val, abs? */
-	num = abs(next->n - curr->n);
+	num = next->n - curr->n;
 	/* remove first two nodes */
 	rm_first_node(stk), rm_first_node(stk);
 	/* add new node */
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
 }
 
 /**
@@ -72,7 +72,7 @@ void Div(stack_t **stk, unsigned int line_number)
 	/* get new node val */
 	if (curr->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero", line_number);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_m_buff(), exit(EXIT_FAILURE);
 	}
 	num = next->n / curr->n;
@@ -82,7 +82,7 @@ void Div(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
 }
 
 /**
@@ -121,7 +121,7 @@ void Mul(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
 }
 
 /**
@@ -155,7 +155,7 @@ void Mod(stack_t **stk, unsigned int line_number)
 	/* get new node val */
 	if (curr->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero", line_number);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_m_buff(), exit(EXIT_FAILURE);
 	}
 	num = next->n % curr->n;
@@ -165,5 +165,5 @@ void Mod(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
 }

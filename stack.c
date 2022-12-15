@@ -12,11 +12,6 @@ void Push(stack_t **stk, unsigned int line_number)
 	stack_t *node = NULL;
 	int num = 0;
 
-	if (!stk)
-	{
-		fprintf(stderr, "Initialize monthy data");
-		exit(EXIT_FAILURE);
-	}
 	/* get num from monthy_data, atoi returns 0 on error*/
 	/* make sure p_data[1] is NULL if not given, we cant check for == 0 */
 	/* 0 is an int */
@@ -38,7 +33,11 @@ void Push(stack_t **stk, unsigned int line_number)
 		node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed"), exit(EXIT_FAILURE);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
 
 }
 
@@ -66,14 +65,11 @@ void Pop(stack_t **stk, unsigned int line_number)
 		/* stack LIFO, remove last item */
 		ex_code = rm_first_node(stk);
 	}
-	else
-	{
-		/* queue FIFO, remove first item */
-		ex_code = rm_last_node(stk);
-	}
 	if (ex_code == 1)
 	{
 		/* stack not created yet, not sure how to handle this error */
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_m_buff();
+		exit(EXIT_FAILURE);
 	}
 }

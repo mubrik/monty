@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	if (!file)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
 	/* store struct */
-	monty_data.file = file;
+	monty_data.file = file, monty_data.d_type = 0;
 	/* main iteration */
 	while ((n_read = getline(&line_buf, &read_l, file)) != -1)
 	{
