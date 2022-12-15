@@ -45,6 +45,8 @@ typedef struct instruction_s
 	OP_func *f;
 } instruction_t;
 
+#define INS_COUNT 12
+
 /* custom structs */
 
 /**
@@ -82,6 +84,7 @@ void Sub(stack_t **stk, unsigned int line_number);
 void Div(stack_t **stk, unsigned int line_number);
 void Mul(stack_t **stk, unsigned int line_number);
 void Mod(stack_t **stk, unsigned int line_number);
+void Pchar(stack_t **stk, unsigned int line_number);
 
 /* utility functions */
 void update_dtype(char *op);
@@ -93,6 +96,7 @@ void free_m_buff();
 /* linked list utility */
 stack_t *add_to_node_end(stack_t **head, const int n);
 stack_t *add_to_node(stack_t **head, const int n);
+stack_t *get_first_node(stack_t **head);
 int rm_first_node(stack_t **head);
 int rm_last_node(stack_t **head);
 size_t print_stk_list(stack_t *head);

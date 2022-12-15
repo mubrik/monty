@@ -11,24 +11,18 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int idx = 0;
 	instruction_t arr_structs[] = {
-		{ "pall", Pall },
-		{ "push", Push },
-		{ "pint", Pint },
-		{ "pop", Pop },
-		{ "swap", Swap },
-		{ "add", Add },
-		{ "nop", Nop },
-		{ "#", Nop },
-		{ "sub", Sub },
-		{ "div", Div },
-		{ "mod", Mod },
-		{ "mul", Mul },
+		{ "pall", Pall }, { "push", Push },
+		{ "pint", Pint }, { "pop", Pop },
+		{ "swap", Swap }, { "add", Add },
+		{ "nop", Nop }, { "#", Nop },
+		{ "sub", Sub }, { "div", Div }, { "mod", Mod },
+		{ "mul", Mul }, { "pchar", Pchar },
 	};
 
 	if (!opcode)
 		return (NULL);
 
-	while (idx < 12)
+	while (idx <= INS_COUNT)
 	{
 		if (strcmp(arr_structs[idx].opcode, opcode) == 0)
 			return (arr_structs[idx].f);

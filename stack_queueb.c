@@ -167,3 +167,31 @@ void Mod(stack_t **stk, unsigned int line_number)
 	if (!node)
 		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
 }
+
+/**
+ * Pchar - prints the char at top element in linked list
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
+void Pchar(stack_t **stk, unsigned int line_number)
+{
+	stack_t *node = NULL;
+
+	node = get_first_node(stk);
+	if (!node)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
+	if (node->n >= 0 && node->n <= 127)
+		printf("%c\n", node->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
+}

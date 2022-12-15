@@ -1,6 +1,31 @@
 #include "monty.h"
 
 /**
+ * get_first_node - gets the node at the beginning of a stack_t list.
+ * @head: pto to head ptr to list first elem
+ *
+ * Return: ptr to new node.
+ */
+stack_t *get_first_node(stack_t **head)
+{
+	stack_t *node;
+
+	/* null chk */
+	if (!head)
+		return (NULL);
+	node = *head;
+	/* make sure start of node, not necessary but alx gon alx */
+	while (node)
+	{
+		if (!node->prev)
+			break;
+		node = node->prev;
+	}
+
+	return (node);
+}
+
+/**
  * list_has_2_nodes - wrapper func, if a stack_t list has 2 nodes.
  * @head: pto to head ptr to list first elem
  *
