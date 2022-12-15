@@ -11,6 +11,9 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int idx = 0;
 
+	if (!opcode)
+		return (NULL);
+
 	instruction_t arr_structs[] = {
 		{ "pall", Pall },
 		{ "push", Push },
@@ -88,27 +91,36 @@ void Tokenize(char *str)
 	int idx = 0;
 	char *token;
 	const char *seperators = " \n\t";
-
+	/* set defaults */
+	monty_data.p_data[idx] = NULL;
+	monty_data.p_data[idx + 1] = NULL;
+	/* get first */
 	token = strtok(str, seperators);
-
-	while (token)
+	/* basic check for comment */
+	if (idx == 0 && token && token[0] == '#')
 	{
-		/* basic check for comment */
-		if (idx == 0 && token && token[0] == '#')
-		{
-			/* add null byte and set in monty data */
-			if (token[1])
-				token[1] = '\0';
-			monty_data.p_data[idx] = token, monty_data.p_data[idx + 1] = NULL;
-			return;
-		}
+		/* add null byte and set in monty data */
+		if (token[1])
+			token[1] = '\0';
 		monty_data.p_data[idx] = token;
-		token = strtok(NULL, seperators);
+		return;
+	}
+	/* first opcode */
+	if (token)
+		monty_data.p_data[idx] = token;
+	/* 2nd for push opcode exclusively */
+	token = strtok(NULL, seperators);
+	if (token)
+		monty_data.p_data[idx + 1] = token;
+
+	/* while (token)
+	{
+		monty_data.p_data[idx] = token;
 		idx++;
 		if (idx == 2)
 			return;
 	}
-	monty_data.p_data[idx] = token;
+	monty_data.p_data[idx] = token; */
 }
 
 /**
