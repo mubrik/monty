@@ -1,11 +1,31 @@
 #include "monty.h"
 
-void Swap(stack_t **stk, unsigned int line_number)
+/**
+ * Pint - prints the value at the top of the stack, followed by a new line
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
+void Pint(stack_t **stk, unsigned int line_number)
 {
-
+	/* if stack is empty */
+	if (!(*stk))	
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	
+	printf("%d\n", (*stk)->n);
 }
 
-
+/**
+ * Pall - print all element in a stack | queue
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
 void Pall(stack_t **stk, unsigned int line_number)
 {
 	stack_t *ptr = *stk;
@@ -15,3 +35,15 @@ void Pall(stack_t **stk, unsigned int line_number)
 		ptr = ptr->next;
 	}
 }
+
+/**
+ * Swap - swap the top two element in linked list
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
+void Swap(stack_t **stk, unsigned int line_number)
+{
+
+} 

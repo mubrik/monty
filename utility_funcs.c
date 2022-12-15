@@ -15,11 +15,12 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t arr_structs[] = {
 		{ "pall", Pall },
 		{ "push", Push },
+		{ "pint", Pint },
 		{ "pop", Pop },
 		{ "swap", Swap }, 
 	};
 
-	while (idx < 4)
+	while (idx < 5)
 	{
 
 		if (strcmp(arr_structs[idx].opcode, opcode) == 0)

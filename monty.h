@@ -77,6 +77,7 @@ void Dequeue(stack_t **stk, unsigned int line_number);
 void Swap(stack_t **stk, unsigned int line_number);
 void Peek(stack_t **stk, unsigned int line_number);
 void Pall(stack_t **stk, unsigned int line_number);
+void Pint(stack_t **stk, unsigned int line_number);
 
 /* utility functions */
 int Empty(stack_t **stk);
