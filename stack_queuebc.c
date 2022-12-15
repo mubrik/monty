@@ -7,7 +7,7 @@
  *
  * Return: nothing
  */
-void Pstr(stack_t **stk, 	__attribute__((unused)) unsigned int line_number)
+void Pstr(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *node = NULL;
 

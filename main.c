@@ -1,3 +1,5 @@
+#define  _POSIX_C_SOURCE 200809L
+#include <stdio.h>
 #include "monty.h"
 
 /* definition of m_data_t global variable */

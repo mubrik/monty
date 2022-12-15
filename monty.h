@@ -9,7 +9,7 @@
 /* definitions */
 #define IS_ASCII(n) (n >= 0 && n <= 127)
 /* buffer */
-typedef char * buf;
+typedef char *buf;
 
 /* alx structs */
 
@@ -50,17 +50,17 @@ typedef struct instruction_s
 /**
  * struct m_data - Holds the general data for the monty program
  * @file: hol0ds the pointer to the file input
- * @p_action: holds the pointer for each line read from file
+ * @line_buf: holds the pointer for each line read from file
  * @d_type: flag for stack or queue. 0 for stack, 1 for queue
  * @stk_head: head node of linked list
- * stk_head
+ * @p_data: user inputs
  */
 typedef struct m_data
 {
 	FILE *file;
 	int d_type;
 	char *p_data[2];
-  stack_t *stk_head;
+	stack_t *stk_head;
 	buf line_buf;
 } m_data_t;
 
@@ -93,7 +93,7 @@ void update_dtype(char *op);
 char *TrimWhiteSpace(char *str);
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void Tokenize(char *str);
-void free_m_buff();
+void free_m_buff(void);
 
 /* linked list utility */
 stack_t *add_to_node_end(stack_t **head, const int n);

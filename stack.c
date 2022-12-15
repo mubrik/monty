@@ -25,7 +25,12 @@ void Push(stack_t **stk, unsigned int line_number)
 		num = atoi(monty_data.p_data[1]);
 	/* check if num actually a number or NULL */
 	/* @smart cant push 0 to stack with this if check? */
-	/* if (num == 0 || !num) */
+	if (num == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
 	/* stack LIFO / Queue FIFO */
 	if (monty_data.d_type)
 		node = add_to_node_end(stk, num);
