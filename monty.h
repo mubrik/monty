@@ -84,9 +84,10 @@ void Mul(stack_t **stk, unsigned int line_number);
 void Mod(stack_t **stk, unsigned int line_number);
 void Pchar(stack_t **stk, unsigned int line_number);
 void Pstr(stack_t **stk, unsigned int line_number);
+void Rotl(stack_t **stk, unsigned int line_number);
 
 /* counts of instruction handlers */
-#define INS_COUNT 13
+#define INS_COUNT 14
 
 /* utility functions */
 void update_dtype(char *op);

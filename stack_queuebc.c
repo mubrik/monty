@@ -32,3 +32,31 @@ void Pstr(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 	printf("\n");
 
 }
+
+/**
+ * Rotl - rotates the stack to the top
+ * @stk: head node
+ * @line_number: line number in bytecode file
+ *
+ * Return: nothing
+ */
+void Rotl(stack_t **stk, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *tail, *head, *next;
+
+	tail = head = *stk;
+	next = (*stk)->next;
+	/* if stack is empty or only one element */
+	if (!head || !head->next)
+		return;
+	/* get the last node in stack */
+	while (tail->next)
+		tail = tail->next;
+
+	head->next->prev = NULL;
+	tail->next = head;
+	head->prev = tail;
+	head->next = NULL;
+	/* update head node */
+	*stk = next;
+}

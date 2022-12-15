@@ -14,7 +14,7 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "pall", Pall }, { "push", Push },
 		{ "pint", Pint }, { "pop", Pop },
 		{ "swap", Swap }, { "add", Add },
-		{ "nop", Nop }, { "#", Nop },
+		{ "nop", Nop }, { "#", Nop }, { "rotl", Rotl },
 		{ "sub", Sub }, { "div", Div }, { "mod", Mod },
 		{ "mul", Mul }, { "pchar", Pchar }, {"pstr", Pstr}
 	};
