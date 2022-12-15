@@ -65,7 +65,9 @@ void Swap(stack_t **stk, unsigned int line_number)
 	next->prev = (*stk)->prev;
 	(*stk)->prev = next;
 	(*stk)->next = next->next;
-	next->next->prev = *stk;
+	/* if there are more than two nodes */
+	if (next->next)
+		next->next->prev = *stk;
 	next->next = *stk;
 	/*update head node */
 	*stk = next;
