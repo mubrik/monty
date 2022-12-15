@@ -11,16 +11,19 @@ void Push(stack_t **stk, unsigned int line_number)
 {
 	stack_t *node;
 	int num;
-
+	
+	num = 0;
 	if (!stk)
 	{
 		fprintf(stderr, "Initialize monthy data");
 		exit(EXIT_FAILURE);
 	}
-	/* get num from monthy d */
-	num = atoi(monty_data.p_data[1]);
-	/* check if num actually a number */
-	if (!(num >= 0 && num <= 9))
+	/* get num from monthy_data, atoi returns 0 on error*/
+	if (monty_data.p_data[1])
+		num = atoi(monty_data.p_data[1]);
+
+	/* check if num actually a number or NULL */
+	if (num == 0 || !num)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
