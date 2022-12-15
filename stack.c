@@ -21,6 +21,8 @@ void Push(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	/* using atoi, there is no way to distinguish between 0 as an error */
+	/* and as the converted value. it is recommended to instead use the strtol() function */
 	else
 		num = strtol(monty_data.p_data[1], &endptr, 10);
 	/* check if num actually a number or NULL */
