@@ -7,7 +7,7 @@
  *
  * Return: nothing
  */
-void Pstr(stack_t **stk, unsigned int line_number)
+void Pstr(stack_t **stk, 	__attribute__((unused)) unsigned int line_number)
 {
 	stack_t *node = NULL;
 
@@ -23,7 +23,7 @@ void Pstr(stack_t **stk, unsigned int line_number)
 	{
 		if (node->n == 0)
 			return;
-		if (!is_ascii(node->n))
+		if (!IS_ASCII(node->n))
 			return;
 		printf("%c", node->n);
 		node = node->next;

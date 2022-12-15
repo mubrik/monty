@@ -7,7 +7,7 @@
 #include <string.h>
 
 /* definitions */
-
+#define IS_ASCII(n) (n >= 0 && n <= 127)
 /* buffer */
 typedef char * buf;
 
@@ -44,8 +44,6 @@ typedef struct instruction_s
 	char *opcode;
 	OP_func *f;
 } instruction_t;
-
-
 
 /* custom structs */
 
@@ -96,14 +94,6 @@ char *TrimWhiteSpace(char *str);
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number);
 void Tokenize(char *str);
 void free_m_buff();
-
-/**
- * is_ascii - checks if number is valid ascii
- * @n: num
- * Return: int
- */
-static inline int is_ascii(int n)
-	{ return (n >= 0 && n <= 127); }
 
 /* linked list utility */
 stack_t *add_to_node_end(stack_t **head, const int n);

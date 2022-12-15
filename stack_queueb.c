@@ -186,7 +186,7 @@ void Pchar(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
-	if (node->n >= 0 && node->n <= 127)
+	if (IS_ASCII(node->n))
 		printf("%c\n", node->n);
 	else
 	{
