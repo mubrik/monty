@@ -74,7 +74,7 @@ void Pop(stack_t **stk, unsigned int line_number);
 
 /* stack-queue functions */
 void Swap(stack_t **stk, unsigned int line_number);
-void Peek(stack_t **stk, unsigned int line_number);
+void Add(stack_t **stk, unsigned int line_number);
 void Pall(stack_t **stk, unsigned int line_number);
 void Pint(stack_t **stk, unsigned int line_number);
 

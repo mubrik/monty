@@ -13,6 +13,7 @@ void Pint(stack_t **stk, unsigned int line_number)
 	if (!(*stk))
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
 
@@ -51,6 +52,7 @@ void Swap(stack_t **stk, unsigned int line_number)
 	if (!(*stk) || !(*stk)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
 
@@ -62,4 +64,44 @@ void Swap(stack_t **stk, unsigned int line_number)
 	next->next = *stk;
 	/*update head node */
 	*stk = next;
+}
+
+/**
+ * Add - Adds the top two element in linked list
+ * @stk: head node
+ * @line_number: line_number in bytecode file
+ *
+ * Return: nothing
+ */
+void Add(stack_t **stk, unsigned int line_number)
+{
+	stack_t *next = NULL, *curr = NULL, *node = NULL;
+	int num;
+
+	/* if number of nodes is less than 2 */
+	if (!stk || !(*stk) || !(*stk)->next)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
+	/* make sure first node */
+	while (curr)
+	{
+		if (!curr->prev)
+			break;
+		curr = curr->prev;
+	}
+
+	curr = *stk;
+	next = curr->next;
+	/* get new node val */
+	num = curr->n + next->n;
+	/* remove first two nodes */
+	rm_first_node(stk), rm_first_node(stk);
+	/* add new node */
+	node = add_to_node(stk, num);
+	/* check node created */
+	if (!node)
+		fprintf(stderr, "Error: malloc failed"), free_m_buff(), exit(EXIT_FAILURE);
 }
