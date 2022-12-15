@@ -19,6 +19,7 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "swap", Swap },
 		{ "add", Add },
 		{ "nop", Nop },
+		{ "#", Nop },
 		{ "sub", Sub },
 		{ "div", Div },
 		{ "mod", Mod },
@@ -92,6 +93,15 @@ void Tokenize(char *str)
 	{
 		monty_data.p_data[idx] = token;
 		token = strtok(NULL, seperators);
+		/* basic check for comment */
+		if (idx == 0 && token && token[0] == '#')
+		{
+			/* add null byte and set in monty data */
+			if (token[1])
+				token[1] = '\0';
+			monty_data.p_data[idx] = token;
+			return;
+		}
 		idx++;
 		if (idx == 2) return;
 	}
