@@ -10,12 +10,12 @@
 void Pint(stack_t **stk, unsigned int line_number)
 {
 	/* if stack is empty */
-	if (!(*stk))	
+	if (!(*stk))
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	printf("%d\n", (*stk)->n);
 }
 
@@ -26,7 +26,7 @@ void Pint(stack_t **stk, unsigned int line_number)
  *
  * Return: nothing
  */
-void Pall(stack_t **stk, unsigned int line_number)
+void Pall(stack_t **stk,	__attribute__((unused)) unsigned int line_number)
 {
 	stack_t *ptr = *stk;
 	while (ptr)
@@ -53,7 +53,7 @@ void Swap(stack_t **stk, unsigned int line_number)
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	next = (*stk)->next;
 	next->prev = (*stk)->prev;
 	(*stk)->prev = next;
@@ -62,4 +62,4 @@ void Swap(stack_t **stk, unsigned int line_number)
 	next->next = *stk;
 	/*update head node */
 	*stk = next;
-} 
+}

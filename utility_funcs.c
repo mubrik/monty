@@ -5,11 +5,10 @@
  * get_func - returns the correct function for a opcode
  * @opcode: string representation of the operation
  *
- * Return: stack or queue operation
+ * Return: ptr stack or queue func operation or NULL
  */
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 {
-
 	int idx = 0;
 
 	instruction_t arr_structs[] = {
@@ -17,12 +16,11 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "push", Push },
 		{ "pint", Pint },
 		{ "pop", Pop },
-		{ "swap", Swap }, 
+		{ "swap", Swap },
 	};
 
 	while (idx < 5)
 	{
-
 		if (strcmp(arr_structs[idx].opcode, opcode) == 0)
 			return (arr_structs[idx].f);
 		idx++;
@@ -45,19 +43,6 @@ void update_dtype(char *op)
 }
 
 /**
- * SEmpty - helper func checks if a stack is empty
- * @stk: stack head
- * @return 1 if empty, 0 else
- * Return: 1 if full, 0 else
- */
-int SEmpty(stack_t **stk)
-{
-	if (!stk || !(*stk))
-		return (1);
-	return (0);
-}
-
-/**
  * TrimWhiteSpace - remove leading and trailing white spaces
  * @str: original string
  *
@@ -67,17 +52,17 @@ char *TrimWhiteSpace(char *str)
 {
 	char *end;
 
-	// Trim leading space
+	/* Trim leading space */
 	while(isspace((unsigned char)*str)) str++;
 
-	if(*str == 0)  // All spaces?
+	if(*str == 0)  /* All spaces? */
 		return str;
 
-	// Trim trailing space
+	/* Trim trailing space */
 	end = str + strlen(str) - 1;
 	while(end > str && isspace((unsigned char)*end)) end--;
 
-	// Write new null terminator character
+	/* Write new null terminator character */
 	end[1] = '\0';
 
 	return str;
@@ -98,13 +83,30 @@ void Tokenize(char *str)
 	token = strtok(str, seperators);
 
 	while (token)
-	{	
+	{
 		monty_data.p_data[idx] = token;
 		token = strtok(NULL, seperators);
 		idx++;
 		if (idx == 2) return;
 	}
-	
 	monty_data.p_data[idx] = token;
 }
 
+/**
+ * free_m_buff - utility function to easily free up malloc'd buffers in m_data
+ * Return: void
+ */
+void free_m_buff()
+{
+	/* check line buff and free */
+	if (monty_data.line_buf)
+		free(monty_data.line_buf);
+
+	/* check linked list head */
+	if (monty_data.stk_head)
+		free_stk_list(&monty_data.stk_head);
+
+	/* check if file stream open */
+	if (monty_data.file)
+		fclose(monty_data.file);
+}

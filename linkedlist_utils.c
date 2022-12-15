@@ -131,10 +131,37 @@ int rm_first_node(stack_t **head)
 	next = node->next;
 	if (next)
 		next->prev = NULL, *head = next, free(node);
-	
+
 	/* if next does not exist, then just empty the list */
 	else free(*head), *head = NULL;
 
-	//free(node);
+	/* free(node); */
 	return (0);
+}
+
+/**
+ * free_stk - frees memory of stack_t list.
+ * @head: pto to head ptr to list first elem
+ * Return: ptr to new node.
+ */
+void free_stk_list(stack_t **head)
+{
+	stack_t *next = NULL, *node = NULL;
+
+	if (!head)
+		return;
+	node = *head;
+	/* make sure start of node*/
+	while (node)
+	{
+		if (!node->prev)
+			break;
+		node = node->prev;
+	}
+	/* iterate foward and free */
+	while (node)
+		next = node->next, free(node), node = next;
+	/* set list head to NULL */
+	*head = NULL;
+
 }

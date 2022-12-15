@@ -9,10 +9,9 @@
  */
 void Push(stack_t **stk, unsigned int line_number)
 {
-	stack_t *node;
-	int num;
-	
-	num = 0;
+	stack_t *node = NULL;
+	int num = 0;
+
 	if (!stk)
 	{
 		fprintf(stderr, "Initialize monthy data");
@@ -49,7 +48,6 @@ void Push(stack_t **stk, unsigned int line_number)
  */
 void Pop(stack_t **stk, unsigned int line_number)
 {
-	stack_t *node, *prev, *next;
 	int ex_code;
 
 	if (!stk || !(*stk))
