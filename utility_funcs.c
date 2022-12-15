@@ -16,7 +16,7 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "swap", Swap }, { "add", Add },
 		{ "nop", Nop }, { "#", Nop },
 		{ "sub", Sub }, { "div", Div }, { "mod", Mod },
-		{ "mul", Mul }, { "pchar", Pchar },
+		{ "mul", Mul }, { "pchar", Pchar }, {"pstr", Pstr}
 	};
 
 	if (!opcode)
