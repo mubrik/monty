@@ -36,7 +36,7 @@ stack_t *add_to_node(stack_t **head, const int n)
 }
 
 /**
- * add_node_to_end - adds a new node at the end of a stack_t list.
+ * add_to_node_end - adds a new node at the end of a stack_t list.
  * @head: pto to head ptr to list first elem
  * @n: n for new node
  *
@@ -131,16 +131,16 @@ int rm_first_node(stack_t **head)
 	next = node->next;
 	if (next)
 		next->prev = NULL, *head = next, free(node);
-
 	/* if next does not exist, then just empty the list */
-	else free(*head), *head = NULL;
+	else
+		free(*head), *head = NULL;
 
 	/* free(node); */
 	return (0);
 }
 
 /**
- * free_stk - frees memory of stack_t list.
+ * free_stk_list - frees memory of stack_t list.
  * @head: pto to head ptr to list first elem
  * Return: ptr to new node.
  */
