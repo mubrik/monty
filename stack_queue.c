@@ -27,7 +27,7 @@ void Pint(stack_t **stk, unsigned int line_number)
  *
  * Return: nothing
  */
-void Pall(stack_t **stk,	__attribute__((unused)) unsigned int line_number)
+void Pall(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *ptr = *stk;
 
@@ -114,7 +114,8 @@ void Add(stack_t **stk, unsigned int line_number)
  *
  * Return: nothing
  */
-void Nop(stack_t **stk, unsigned int line_number)
+void Nop(__attribute__((unused)) stack_t **stk,
+	__attribute__((unused)) unsigned int line_number)
 {
 
 }
