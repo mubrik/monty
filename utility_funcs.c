@@ -87,7 +87,7 @@ void Tokenize(char *str)
 {
 	int idx = 0;
 	char *token;
-	const char *seperators = " \n";
+	const char *seperators = " \n\t";
 
 	token = strtok(str, seperators);
 

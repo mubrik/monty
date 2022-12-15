@@ -80,7 +80,7 @@ void Add(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!stk || !(*stk) || !(*stk)->next)
+	if (!list_has_2_nodes(stk))
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free_m_buff();

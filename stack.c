@@ -18,17 +18,19 @@ void Push(stack_t **stk, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	/* get num from monthy_data, atoi returns 0 on error*/
+	/* make sure p_data[1] is NULL if not given, we cant check for == 0 */
+	/* 0 is an int */
 	if (monty_data.p_data[1])
 		num = atoi(monty_data.p_data[1]);
-
-	/* check if num actually a number or NULL */
-	/* @smart cant push 0 to stack with this if check? */
-	if (num == 0 || !num)
+	else
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	/* check if num actually a number or NULL */
+	/* @smart cant push 0 to stack with this if check? */
+	/* if (num == 0 || !num) */
 	/* stack LIFO / Queue FIFO */
 	if (monty_data.d_type)
 		node = add_to_node_end(stk, num);

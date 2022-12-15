@@ -20,7 +20,7 @@ stack_t *add_to_node(stack_t **head, const int n)
 	/* make sure start of node, not necessary but alx gon alx */
 	while (*head)
 	{
-		if (!((*head)->prev))
+		if (!(*head)->prev)
 		{
 			/* make curr head prev node our new node */
 			(*head)->prev = node;
@@ -130,10 +130,11 @@ int rm_first_node(stack_t **head)
 	/* check if next, set as new head and remove prvious*/
 	next = node->next;
 	if (next)
-		next->prev = NULL, *head = next, free(node);
+		next->prev = NULL, *head = next;
 	/* if next does not exist, then just empty the list */
 	else
-		free(*head), *head = NULL;
+		*head = NULL;
+	free(node);
 
 	/* free(node); */
 	return (0);
