@@ -10,7 +10,7 @@
 void Pint(stack_t **stk, unsigned int line_number)
 {
 	/* if stack is empty */
-	if (!(*stk))
+	if (!stk || !(*stk))
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_m_buff();
@@ -86,6 +86,7 @@ void Add(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	curr = *stk;
 	/* make sure first node */
 	while (curr)
 	{
@@ -93,8 +94,6 @@ void Add(stack_t **stk, unsigned int line_number)
 			break;
 		curr = curr->prev;
 	}
-
-	curr = *stk;
 	next = curr->next;
 	/* get new node val */
 	num = curr->n + next->n;

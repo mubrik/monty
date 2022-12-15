@@ -19,6 +19,8 @@ void Sub(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+
+	curr = *stk;
 	/* make sure first node */
 	while (curr)
 	{
@@ -27,7 +29,6 @@ void Sub(stack_t **stk, unsigned int line_number)
 		curr = curr->prev;
 	}
 
-	curr = *stk;
 	next = curr->next;
 	/* get new node val, abs? */
 	num = abs(next->n - curr->n);
@@ -59,6 +60,7 @@ void Div(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	curr = *stk;
 	/* make sure first node */
 	while (curr)
 	{
@@ -66,8 +68,6 @@ void Div(stack_t **stk, unsigned int line_number)
 			break;
 		curr = curr->prev;
 	}
-
-	curr = *stk;
 	next = curr->next;
 	/* get new node val */
 	if (curr->n == 0)
@@ -104,6 +104,7 @@ void Mul(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	curr = *stk;
 	/* make sure first node */
 	while (curr)
 	{
@@ -111,8 +112,6 @@ void Mul(stack_t **stk, unsigned int line_number)
 			break;
 		curr = curr->prev;
 	}
-
-	curr = *stk;
 	next = curr->next;
 	/* get new node val */
 	num = next->n * curr->n;
@@ -144,6 +143,7 @@ void Mod(stack_t **stk, unsigned int line_number)
 		free_m_buff();
 		exit(EXIT_FAILURE);
 	}
+	curr = *stk;
 	/* make sure first node */
 	while (curr)
 	{
@@ -151,8 +151,6 @@ void Mod(stack_t **stk, unsigned int line_number)
 			break;
 		curr = curr->prev;
 	}
-
-	curr = *stk;
 	next = curr->next;
 	/* get new node val */
 	if (curr->n == 0)
