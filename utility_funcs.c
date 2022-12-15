@@ -28,7 +28,6 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 	if (!opcode)
 		return (NULL);
 
-
 	while (idx < 12)
 	{
 		if (strcmp(arr_structs[idx].opcode, opcode) == 0)

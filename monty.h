@@ -97,5 +97,8 @@ int rm_first_node(stack_t **head);
 int rm_last_node(stack_t **head);
 void free_stk_list(stack_t **head);
 int list_has_2_nodes(stack_t **head);
+int list_is_empty(stack_t **head);
+
+#define L_EMPTY(p) list_is_empty(p)
 
 #endif /* MONTY_H */

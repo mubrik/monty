@@ -10,7 +10,7 @@
 void Pint(stack_t **stk, unsigned int line_number)
 {
 	/* if stack is empty */
-	if (!stk || !(*stk))
+	if (L_EMPTY(stk))
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_m_buff();
