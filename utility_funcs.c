@@ -113,14 +113,14 @@ void Tokenize(char *str)
 	if (token)
 		monty_data.p_data[idx + 1] = token;
 
-	/* while (token)
-	{
-		monty_data.p_data[idx] = token;
-		idx++;
-		if (idx == 2)
-			return;
-	}
-	monty_data.p_data[idx] = token; */
+	/* while (token) */
+	/* { */
+		/* monty_data.p_data[idx] = token; */
+		/* idx++; */
+		/* if (idx == 2) */
+			/* return; */
+	/* } */
+	/* monty_data.p_data[idx] = token; */
 }
 
 /**
