@@ -10,10 +10,6 @@
 void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int idx = 0;
-
-	if (!opcode)
-		return (NULL);
-
 	instruction_t arr_structs[] = {
 		{ "pall", Pall },
 		{ "push", Push },
@@ -28,6 +24,10 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "mod", Mod },
 		{ "mul", Mul },
 	};
+
+	if (!opcode)
+		return (NULL);
+
 
 	while (idx < 12)
 	{
