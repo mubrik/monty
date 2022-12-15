@@ -13,7 +13,7 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 	instruction_t arr_structs[] = {
 		{ "pall", Pall }, { "push", Push },
 		{ "pint", Pint }, { "pop", Pop },
-		{ "swap", Swap }, { "add", Add },
+		{ "swap", Swap }, { "add", Add }, { "rotr", Rotr },
 		{ "nop", Nop }, { "#", Nop }, { "rotl", Rotl },
 		{ "sub", Sub }, { "div", Div }, { "mod", Mod },
 		{ "mul", Mul }, { "pchar", Pchar }, {"pstr", Pstr}

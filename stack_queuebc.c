@@ -45,10 +45,10 @@ void Rotl(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 	stack_t *tail, *head, *next;
 
 	tail = head = *stk;
-	next = (*stk)->next;
 	/* if stack is empty or only one element */
 	if (!head || !head->next)
 		return;
+	next = (*stk)->next;
 	/* get the last node in stack */
 	while (tail->next)
 		tail = tail->next;
@@ -59,4 +59,32 @@ void Rotl(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 	head->next = NULL;
 	/* update head node */
 	*stk = next;
+}
+
+
+/**
+ * Rotr - rotates the stack to the top
+ * @stk: head node
+ * @line_number: line number in bytecode file
+ *
+ * Return: nothing
+ */
+void Rotr(stack_t **stk, __attribute__((unused)) unsigned int line_number)
+{
+	stack_t *tail, *head;
+
+	tail = head = *stk;
+	/* if stack is empty or only one element */
+	if (!head || !head->next)
+		return;
+	/* get the last node in stack */
+	while (tail->next)
+		tail = tail->next;
+
+	tail->prev->next = NULL;
+	head->prev = tail;
+	tail->prev = NULL;
+	tail->next = head;
+	/* update head node */
+	*stk = tail;
 }
