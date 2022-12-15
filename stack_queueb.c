@@ -114,7 +114,7 @@ void Mul(stack_t **stk, unsigned int line_number)
 	}
 	next = curr->next;
 	/* get new node val */
-	num = next->n * curr->n;
+	num = (next->n * curr->n);
 	/* remove first two nodes */
 	rm_first_node(stk), rm_first_node(stk);
 	/* add new node */
@@ -158,7 +158,7 @@ void Mod(stack_t **stk, unsigned int line_number)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free_m_buff(), exit(EXIT_FAILURE);
 	}
-	num = next->n % curr->n;
+	num = (next->n % curr->n);
 	/* remove first two nodes */
 	rm_first_node(stk), rm_first_node(stk);
 	/* add new node */
