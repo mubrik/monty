@@ -15,11 +15,6 @@ void Sub(stack_t **stk, unsigned int line_number)
 	/* if number of nodes is less than 2 */
 	if (!L_TW_NODES(stk))
 		err_handler(ERR_SIS, "sub", line_number, 1);
-	/* { */
-		/* fprintf(stderr, "L%d: can't sub, stack too short\n", line_number); */
-		/* free_m_buff(); */
-		/* exit(EXIT_FAILURE); */
-	/* } */
 
 	curr = *stk;
 	/* make sure first node */
@@ -29,7 +24,6 @@ void Sub(stack_t **stk, unsigned int line_number)
 			break;
 		curr = curr->prev;
 	}
-
 	next = curr->next;
 	/* get new node val, abs? */
 	num = next->n - curr->n;
@@ -39,7 +33,7 @@ void Sub(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
+		err_handler(ERR_MME, NULL, line_number, 1);
 }
 
 /**
@@ -57,11 +51,6 @@ void Div(stack_t **stk, unsigned int line_number)
 	/* if number of nodes is less than 2 */
 	if (!L_TW_NODES(stk))
 		err_handler(ERR_SIS, "div", line_number, 1);
-	/* { */
-		/* fprintf(stderr, "L%d: can't div, stack too short\n", line_number); */
-		/* free_m_buff(); */
-		/* exit(EXIT_FAILURE); */
-	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -84,7 +73,7 @@ void Div(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
+		err_handler(ERR_MME, NULL, line_number, 1);
 }
 
 /**
@@ -102,11 +91,6 @@ void Mul(stack_t **stk, unsigned int line_number)
 	/* if number of nodes is less than 2 */
 	if (!L_TW_NODES(stk))
 		err_handler(ERR_SIS, "mul", line_number, 1);
-	/* { */
-		/* fprintf(stderr, "L%d: can't mul, stack too short\n", line_number); */
-		/* free_m_buff(); */
-		/* exit(EXIT_FAILURE); */
-	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -124,7 +108,7 @@ void Mul(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
+		err_handler(ERR_MME, NULL, line_number, 1);
 }
 
 /**
@@ -142,11 +126,6 @@ void Mod(stack_t **stk, unsigned int line_number)
 	/* if number of nodes is less than 2 */
 	if (!L_TW_NODES(stk))
 		err_handler(ERR_SIS, "mod", line_number, 1);
-	/* { */
-		/* fprintf(stderr, "L%d: can't mod, stack too short\n", line_number); */
-		/* free_m_buff(); */
-		/* exit(EXIT_FAILURE); */
-	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -169,7 +148,7 @@ void Mod(stack_t **stk, unsigned int line_number)
 	node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-		fprintf(stderr, "Error: malloc failed\n"), free_m_buff(), exit(EXIT_FAILURE);
+		err_handler(ERR_MME, NULL, line_number, 1);
 }
 
 /**
@@ -185,12 +164,7 @@ void Pchar(stack_t **stk, unsigned int line_number)
 	/* safe fucntion, return null if stk null */
 	node = get_first_node(stk);
 	if (!node)
-	{
-		err_handler(ERR_SIS, "pchar", line_number, 1);
-		/* fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number); */
-		/* free_m_buff(); */
-		/* exit(EXIT_FAILURE); */
-	}
+		err_handler(ERR_SIE, "pchar", line_number, 1);
 	if (IS_ASCII(node->n))
 		printf("%c\n", node->n);
 	else

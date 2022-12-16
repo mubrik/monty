@@ -21,12 +21,10 @@ int main(int argc, char **argv)
 	/* check if argc exactly 2, name and file */
 	if (argc != 2)
 		err_handler(ERR_ANF, NULL, line_number, 1);
-		/* fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE); */
 	/* open file and check */
 	file = fopen(argv[1], "r");
 	if (!file)
 		err_handler(ERR_FNF, argv[1], line_number, 1);
-		/* fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_; */
 	/* store struct */
 	monty_data.file = file, monty_data.d_type = 0;
 	/* main iteration */
@@ -40,14 +38,9 @@ int main(int argc, char **argv)
 		if (p_func)
 			p_func(&monty_data.stk_head, line_number);
 		else if (monty_data.p_data[0])
-		{
 			/* p_data[0] is valid but no instruction handler */
 			/* NULL == Blank line */
 			err_handler(ERR_INF, monty_data.p_data[0], line_number, 1);
-			/* fprintf(stderr, "L%ld: unknown instruction %s\n", */
-				/* line_number, monty_data.p_data[0]), free_m_buff(); */
-			/* exit(EXIT_FAILURE); */
-		}
 		line_number++;
 	}
 	free_m_buff();

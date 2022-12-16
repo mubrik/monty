@@ -16,11 +16,7 @@ void Push(stack_t **stk, unsigned int line_number)
 	/* get num from monthy_data, atoi returns 0 on error*/
 	/* make sure p_data[1] is NULL if not given */
 	if (monty_data.p_data[1] == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+		err_handler(ERR_PBA, NULL, line_number, 1);
 	/* using atoi, there is no way to distinguish between 0 as an error */
 	/* and as the converted value. it is recommended to */
 	/* instead use the strtol() function */
@@ -28,11 +24,7 @@ void Push(stack_t **stk, unsigned int line_number)
 		num = strtol(monty_data.p_data[1], &endptr, 10);
 	/* check if num actually a number or NULL */
 	if (endptr && *endptr != '\0')
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+		err_handler(ERR_PBA, NULL, line_number, 1);
 	/* stack LIFO / Queue FIFO */
 	if (monty_data.d_type)
 		node = add_to_node_end(stk, num);
@@ -40,14 +32,9 @@ void Push(stack_t **stk, unsigned int line_number)
 		node = add_to_node(stk, num);
 	/* check node created */
 	if (!node)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+		err_handler(ERR_MME, NULL, line_number, 1);
 
 }
-
 
 /**
  * Pop - Pops an item from the stack
@@ -60,12 +47,8 @@ void Pop(stack_t **stk, unsigned int line_number)
 {
 	int ex_code;
 
-	if (!stk || !(*stk))
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (L_EMPTY(stk))
+		err_handler(ERR_PPS, NULL, line_number, 1);
 	/* check LIFO/FIFO */
 	if (monty_data.d_type == 0)
 	{
@@ -75,8 +58,6 @@ void Pop(stack_t **stk, unsigned int line_number)
 	if (ex_code == 1)
 	{
 		/* stack not created yet, not sure how to handle this error */
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
+		err_handler(ERR_PPS, NULL, line_number, 1);
 	}
 }

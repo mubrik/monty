@@ -138,6 +138,12 @@ void err_handler(enum error_type err, char *str,
 	case ERR_PBA:
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		break;
+	case ERR_PPS:
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		break;
+	case ERR_MME:
+		fprintf(stderr, "Error: malloc failed\n");
+		break;
 	default:
 		break;
 	}

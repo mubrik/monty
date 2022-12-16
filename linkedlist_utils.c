@@ -164,5 +164,4 @@ void free_stk_list(stack_t **head)
 		next = node->next, free(node), node = next;
 	/* set list head to NULL */
 	*head = NULL;
-
 }

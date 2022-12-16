@@ -126,14 +126,18 @@ int list_is_empty(stack_t **head);
  * @ERR_SIE: Stack is empty
  * @ERR_SIS: Stack is short error
  * @ERR_PBA: Push instruction bad int
+ * @ERR_PPS: POP empty stack
+ * @ERR_MME: malloc memory error
  */
 enum error_type {
 	ERR_ANF = 1 << 0,
 	ERR_FNF = 1 << 1,
-	ERR_INF = 2 << 2,
-	ERR_SIE = 3 << 3,
-	ERR_SIS = 4 << 4,
-	ERR_PBA = 4 << 5
+	ERR_INF = 1 << 2,
+	ERR_SIE = 1 << 3,
+	ERR_SIS = 1 << 4,
+	ERR_PBA = 1 << 5,
+	ERR_PPS = 1 << 6,
+	ERR_MME = 1 << 7
 };
 
 void err_handler(enum error_type err, char *str,
