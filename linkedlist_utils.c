@@ -9,10 +9,10 @@
  */
 stack_t *add_to_node(stack_t **head, const int n)
 {
-	stack_t *node;
+	stack_t *node = NULL;
 	/* null chk */
 	if (!head)
-		return (NULL);
+		return (node);
 	/* alloc space */
 	node = malloc(sizeof(stack_t));
 	if (!node)
@@ -47,7 +47,7 @@ stack_t *add_to_node_end(stack_t **head, const int n)
 	stack_t *node = NULL, *tmp = NULL;
 	/* null chk */
 	if (!head)
-		return (NULL);
+		return (node);
 	/* alloc space */
 	node = malloc(sizeof(stack_t));
 	if (!node)

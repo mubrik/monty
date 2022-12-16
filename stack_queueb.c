@@ -13,12 +13,13 @@ void Sub(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!list_has_2_nodes(stk))
-	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "sub", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't sub, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 
 	curr = *stk;
 	/* make sure first node */
@@ -54,12 +55,13 @@ void Div(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!list_has_2_nodes(stk))
-	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "div", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't div, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -98,12 +100,13 @@ void Mul(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!list_has_2_nodes(stk))
-	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "mul", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't mul, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -137,12 +140,13 @@ void Mod(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!list_has_2_nodes(stk))
-	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "mod", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't mod, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)
@@ -178,13 +182,14 @@ void Mod(stack_t **stk, unsigned int line_number)
 void Pchar(stack_t **stk, unsigned int line_number)
 {
 	stack_t *node = NULL;
-
+	/* safe fucntion, return null if stk null */
 	node = get_first_node(stk);
 	if (!node)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
+		err_handler(ERR_SIS, "pchar", line_number, 1);
+		/* fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
 	}
 	if (IS_ASCII(node->n))
 		printf("%c\n", node->n);

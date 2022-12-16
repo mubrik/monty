@@ -8,11 +8,11 @@
  */
 stack_t *get_first_node(stack_t **head)
 {
-	stack_t *node;
+	stack_t *node = NULL;
 
 	/* null chk */
 	if (!head)
-		return (NULL);
+		return (node);
 	node = *head;
 	/* make sure start of node, not necessary but alx gon alx */
 	while (node)
@@ -20,6 +20,31 @@ stack_t *get_first_node(stack_t **head)
 		if (!node->prev)
 			break;
 		node = node->prev;
+	}
+
+	return (node);
+}
+
+/**
+ * get_last_node - gets the node at the end of a stack_t list.
+ * @head: pto to head ptr to list first elem
+ *
+ * Return: ptr to new node.
+ */
+stack_t *get_last_node(stack_t **head)
+{
+	stack_t *node = NULL;
+
+	/* null chk */
+	if (!head)
+		return (node);
+	node = *head;
+	/* iterate */
+	while (node)
+	{
+		if (!node->next)
+			break;
+		node = node->next;
 	}
 
 	return (node);
@@ -46,7 +71,7 @@ int list_has_2_nodes(stack_t **head)
  */
 int list_is_empty(stack_t **head)
 {
-	if (!head || !*head)
+	if (!head || !(*head))
 		return (1);
 	return (0);
 }
@@ -59,7 +84,7 @@ int list_is_empty(stack_t **head)
 size_t print_stk_list(stack_t *head)
 {
 	size_t count = 0;
-	stack_t *node;
+	stack_t *node = NULL;
 
 	node = head;
 	/* make sure start of node, not necessary but alx gon alx */

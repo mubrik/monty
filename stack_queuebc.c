@@ -46,7 +46,7 @@ void Rotl(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 
 	tail = head = *stk;
 	/* if stack is empty or only one element */
-	if (!head || !head->next)
+	if (!L_TW_NODES(stk))
 		return;
 	next = (*stk)->next;
 	/* get the last node in stack */
@@ -75,7 +75,7 @@ void Rotr(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 
 	tail = head = *stk;
 	/* if stack is empty or only one element */
-	if (!head || !head->next)
+	if (!L_TW_NODES(stk))
 		return;
 	/* get the last node in stack */
 	while (tail->next)

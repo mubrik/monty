@@ -11,11 +11,12 @@ void Pint(stack_t **stk, unsigned int line_number)
 {
 	/* if stack is empty */
 	if (L_EMPTY(stk))
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+		err_handler(ERR_SIE, "pint", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't pint, stack empty\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 
 	printf("%d\n", (*stk)->n);
 }
@@ -54,12 +55,13 @@ void Swap(stack_t **stk, unsigned int line_number)
 	stack_t *next;
 
 	/* if number of nodes is less than 2 */
-	if (!(*stk) || !(*stk)->next)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "swap", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't swap, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 
 	next = (*stk)->next;
 	next->prev = (*stk)->prev;
@@ -86,12 +88,13 @@ void Add(stack_t **stk, unsigned int line_number)
 	int num;
 
 	/* if number of nodes is less than 2 */
-	if (!list_has_2_nodes(stk))
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		free_m_buff();
-		exit(EXIT_FAILURE);
-	}
+	if (!L_TW_NODES(stk))
+		err_handler(ERR_SIS, "add", line_number, 1);
+	/* { */
+		/* fprintf(stderr, "L%d: can't add, stack too short\n", line_number); */
+		/* free_m_buff(); */
+		/* exit(EXIT_FAILURE); */
+	/* } */
 	curr = *stk;
 	/* make sure first node */
 	while (curr)

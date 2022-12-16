@@ -18,14 +18,15 @@ int main(int argc, char **argv)
 	buf line_buf = NULL;
 	ssize_t n_read;
 	size_t read_l, line_number = 1;
-
 	/* check if argc exactly 2, name and file */
 	if (argc != 2)
-		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
+		err_handler(ERR_ANF, NULL, line_number, 1);
+		/* fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE); */
 	/* open file and check */
 	file = fopen(argv[1], "r");
 	if (!file)
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_FAILURE);
+		err_handler(ERR_FNF, argv[1], line_number, 1);
+		/* fprintf(stderr, "Error: Can't open file %s\n", argv[1]), exit(EXIT_; */
 	/* store struct */
 	monty_data.file = file, monty_data.d_type = 0;
 	/* main iteration */
@@ -42,9 +43,10 @@ int main(int argc, char **argv)
 		{
 			/* p_data[0] is valid but no instruction handler */
 			/* NULL == Blank line */
-			fprintf(stderr, "L%ld: unknown instruction %s\n",
-				line_number, monty_data.p_data[0]), free_m_buff();
-			exit(EXIT_FAILURE);
+			err_handler(ERR_INF, monty_data.p_data[0], line_number, 1);
+			/* fprintf(stderr, "L%ld: unknown instruction %s\n", */
+				/* line_number, monty_data.p_data[0]), free_m_buff(); */
+			/* exit(EXIT_FAILURE); */
 		}
 		line_number++;
 	}

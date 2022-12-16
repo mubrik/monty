@@ -55,34 +55,6 @@ int update_dtype(char *op)
 }
 
 /**
- * TrimWhiteSpace - remove leading and trailing white spaces
- * @str: original string
- *
- * Return: char *s
- */
-char *TrimWhiteSpace(char *str)
-{
-	char *end;
-
-	/* Trim leading space */
-	while (isspace((unsigned char) *str))
-		str++;
-
-	if (*str == 0)  /* All spaces? */
-		return (str);
-
-	/* Trim trailing space */
-	end = str + strlen(str) - 1;
-	while (end > str && isspace((unsigned char)*end))
-		end--;
-
-	/* Write new null terminator character */
-	end[1] = '\0';
-
-	return (str);
-}
-
-/**
  * Tokenize - split a string into tokens
  * @str: original string
  *
@@ -133,4 +105,47 @@ void free_m_buff(void)
 	/* check if file stream open */
 	if (monty_data.file)
 		fclose(monty_data.file);
+}
+
+/**
+ * err_handler - handles monty_p errors
+ * @err: the error flag, check header for enum
+ * @str: the string to use when available, can be NULL
+ * @line_num: the line number
+ * @ex_code: to check if to exit program or not
+ * Return: int
+ */
+void err_handler(enum error_type err, char *str,
+	unsigned int line_num, int ex_code)
+{
+	switch (err)
+	{
+	case ERR_ANF:
+		fprintf(stderr, "USAGE: monty file\n");
+		break;
+	case ERR_FNF:
+		fprintf(stderr, "Error: Can't open file %s\n", str);
+		break;
+	case ERR_INF:
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, str);
+		break;
+	case ERR_SIE:
+		fprintf(stderr, "L%d: can't %s, stack empty\n", line_num, str);
+		break;
+	case ERR_SIS:
+		fprintf(stderr, "L%d: can't %s, stack too short\n", line_num, str);
+		break;
+	case ERR_PBA:
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		break;
+	default:
+		break;
+	}
+	/* check if to exit program */
+	if (ex_code)
+	{
+		/*  free buf and exit */
+		free_m_buff();
+		exit(EXIT_FAILURE);
+	}
 }
