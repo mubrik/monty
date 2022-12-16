@@ -86,9 +86,10 @@ void Pchar(stack_t **stk, unsigned int line_number);
 void Pstr(stack_t **stk, unsigned int line_number);
 void Rotl(stack_t **stk, unsigned int line_number);
 void Rotr(stack_t **stk, unsigned int line_number);
+void Type(stack_t **stk, unsigned int line_number);
 
 /* counts of instruction handlers */
-#define INS_COUNT 15
+#define INS_COUNT 17
 
 /* utility functions */
 int update_dtype(char *op);

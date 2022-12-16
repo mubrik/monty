@@ -38,15 +38,21 @@ int main(int argc, char **argv)
 		p_func = get_func(monty_data.p_data[0]);
 		if (p_func)
 			p_func(&monty_data.stk_head, line_number);
-
-		/* if user input neither stack or queue then */
-		/* input is invalid - print error message */
-		else if (!update_dtype(monty_data.p_data[0]))
+		else if (monty_data.p_data[0])
 		{
+			/* p_data[0] is valid but no instruction handler */
 			fprintf(stderr, "L%ld: unknown instruction %s\n",
 				line_number, monty_data.p_data[0]), free_m_buff();
 			exit(EXIT_FAILURE);
 		}
+		/* if user input neither stack or queue then */
+		/* input is invalid - print error message */
+		/* else if (!update_dtype(monty_data.p_data[0])) */
+		/* { */
+			/* fprintf(stderr, "L%ld: unknown instruction %s\n", */
+				/* line_number, monty_data.p_data[0]), free_m_buff(); */
+			/* exit(EXIT_FAILURE); */
+		/* } */
 
 		line_number++;
 	}

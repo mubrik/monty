@@ -88,3 +88,20 @@ void Rotr(stack_t **stk, __attribute__((unused)) unsigned int line_number)
 	/* update head node */
 	*stk = tail;
 }
+
+/**
+ * Type - changes the linked list read mode queue or stack lifo/fifo
+ * @stk: head node
+ * @line_number: line number in bytecode file
+ *
+ * Return: nothing
+ */
+void Type(__attribute__((unused)) stack_t **stk,
+	__attribute__((unused)) unsigned int line_number)
+{
+	/* if no stack or input is invalid, stop */
+	if (!stk || !monty_data.p_data[0])
+		return;
+	/* can check for result later? */
+	update_dtype(monty_data.p_data[0]);
+}

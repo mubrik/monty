@@ -16,7 +16,8 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 		{ "swap", Swap }, { "add", Add }, { "rotr", Rotr },
 		{ "nop", Nop }, { "#", Nop }, { "rotl", Rotl },
 		{ "sub", Sub }, { "div", Div }, { "mod", Mod },
-		{ "mul", Mul }, { "pchar", Pchar }, {"pstr", Pstr}
+		{ "mul", Mul }, { "pchar", Pchar }, {"pstr", Pstr},
+		{ "stack", Type }, { "queue", Type },
 	};
 
 	if (!opcode)
@@ -34,12 +35,14 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 /**
  * update_dtype - updates the global var from stack to queue, vise versa
  * @op: the structure to use -> "stack" or "queue"
- *
  * Return: nothing
  */
 int update_dtype(char *op)
 {
 	int updated = 1;
+
+	if (!op)
+		return (0);
 
 	if (strcmp(op, "stack") == 0)
 		monty_data.d_type = 0;
@@ -111,15 +114,6 @@ void Tokenize(char *str)
 	token = strtok(NULL, seperators);
 	if (token)
 		monty_data.p_data[idx + 1] = token;
-
-	/* while (token) */
-	/* { */
-		/* monty_data.p_data[idx] = token; */
-		/* idx++; */
-		/* if (idx == 2) */
-			/* return; */
-	/* } */
-	/* monty_data.p_data[idx] = token; */
 }
 
 /**
