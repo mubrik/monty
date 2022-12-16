@@ -40,11 +40,13 @@ void (*get_func(char *opcode))(stack_t **stack, unsigned int line_number)
 int update_dtype(char *op)
 {
 	int updated = 1;
+
 	if (strcmp(op, "stack") == 0)
 		monty_data.d_type = 0;
 	else if (strcmp(op, "queue") == 0)
 		monty_data.d_type = 1;
-	else updated = 0;
+	else
+		updated = 0;
 
 	return (updated);
 }
