@@ -11,7 +11,7 @@ void Push(stack_t **stk, unsigned int line_number)
 {
 	stack_t *node = NULL;
 	long num = 0;
-	buf endptr;
+	buf endptr = NULL;
 
 	/* get num from monthy_data, atoi returns 0 on error*/
 	/* make sure p_data[1] is NULL if not given */
@@ -27,7 +27,7 @@ void Push(stack_t **stk, unsigned int line_number)
 	else
 		num = strtol(monty_data.p_data[1], &endptr, 10);
 	/* check if num actually a number or NULL */
-	if (endptr == monty_data.p_data[1])
+	if (endptr && *endptr != '\0')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m_buff();
